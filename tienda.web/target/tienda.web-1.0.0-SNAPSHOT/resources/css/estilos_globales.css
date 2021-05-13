@@ -1,0 +1,6 @@
+@charset "ISO-8859-1";
+
+.ui-menu .ui-menuitem-link .ui-menuitem-icon, .ui-menu .ui-submenu-icon {
+    padding-right: 15px;
+    font-size: 15px;
+}

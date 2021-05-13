@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/menu_template.xhtml">
+
+
+	<ui:define name="tituloPagina">#{msglista.T_EditarListPrecio}</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+
+			<p:growl id="messages" showDetail="true" showSummary="true"
+				for="msgGrowl" escape="false" />
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#{request.contextPath}/index.faces" />
+				<p:menuitem value="#{msglista.bc_listaPrecios}" url="#" />
+				<p:menuitem value="#{msglista.bc_administrar}" url="admin.faces" />
+				<p:menuitem value="#{msglista.bc_editar}" url="#" />
+			</p:breadCrumb>
+
+			<p:panelGrid id="panel" style="width:100%">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="2">
+							<p:outputLabel>
+				 	   	  #{msglista.tituloEditar}
+				 	   	</p:outputLabel>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="nomListasprecio"
+							value="#{msglista.nombreListaPrecio}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="nomListasprecio" value="#{beanListaPrecio.objListPrecio.nombrelistaLp}" required="true"
+							requiredMessage="#{msglista.nombreListaPrecioRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="nomListasprecio" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="estListasprecio"
+							value="#{msglista.estadoListaPrecio}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneRadio id="estListasprecio" value="#{beanListaPrecio.objListPrecio.estadoLp}" unselectable="true" required="true"
+							requiredMessage="#{msglista.estadoListaPrecioRequerido}"
+							style="width: 40%; line-height:20 px">
+							<f:selectItem itemLabel="Activa" itemValue= "1" />
+							<f:selectItem itemLabel="Desactiva" itemValue= "2" />
+						</p:selectOneRadio>
+
+
+						<p:message for="estListasprecio" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+				<f:facet name="footer">
+					<p:row>
+						<p:column style="with:20%"></p:column>
+						<p:column style="with:80%">
+							<p:commandButton value="#{msglista.btn_editarLista}"
+								ajax="false" update="panel messages" action="#{beanListaPrecio.editarLista()}"></p:commandButton>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/menu_template.xhtml">
+
+
+	<ui:define name="tituloPagina">#{msgProductos.T_listarProducto}</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+
+			<p:growl id="messages" showDetail="true" showSummary="true"
+				for="msgGrowl" escape="false" />
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#{request.contextPath}/index.faces" />
+				<p:menuitem value="#{msgProductos.bc_listar}" url="#" />
+				<p:menuitem value="#{msgProductos.bc_administrar}" url="#" />
+			</p:breadCrumb>
+
+
+			<p:dataTable var="objProducto" value="#{beanProducto.listProductos}" rows="5" paginator="true"
+				paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+				rowsPerPageTemplate="5,10,15">
+
+				<f:facet name="header">#{msgProductos.T_listarProducto}</f:facet>
+				
+				<p:column headerText="#{msgProductos.codProducto}" style="width=20%">
+				<h:outputText value="#{objProducto.codproductoPro}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgProductos.nombreCategoria}" style="width=80%">
+				<h:outputText value="#{objProducto.categoria.nombrecategoriaCat}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgProductos.nombreProducto}" style="width=80%">
+				<h:outputText value="#{objProducto.nombreproductoPro}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgProductos.descripcionProducto}" style="width=80%">
+				<h:outputText value="#{objProducto.descripcionPro}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgProductos.referenciaProducto}" style="width=80%">
+				<h:outputText value="#{objProducto.referenciaPro}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgProductos.ivaProducto}" style="width=80%">
+				<h:outputText value="#{objProducto.ivaPro}"></h:outputText>
+				
+				</p:column>
+
+				
+
+			</p:dataTable>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

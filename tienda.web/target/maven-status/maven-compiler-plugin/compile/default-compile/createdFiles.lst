@@ -1,0 +1,6 @@
+com\udemweb\controladores\listaPrecioController.class
+com\udemweb\controladores\precioController.class
+com\udemweb\controladores\usuarioController.class
+com\udemweb\controladores\categoriaController.class
+com\udemweb\utilidades\MostrarMensaje.class
+com\udemweb\controladores\productoController.class

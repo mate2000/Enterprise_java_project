@@ -1,0 +1,280 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/menu_template.xhtml">
+
+
+	<ui:define name="tituloPagina">#{msgUsuarios.T_EditarUsuario}</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+
+			<p:growl id="messages" showDetail="true" showSummary="true"
+				for="msgGrowl" escape="false" />
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#{request.contextPath}/index.faces" />
+				<p:menuitem value="#{msgUsuarios.bc_Usuario}" url="#" />
+				<p:menuitem value="#{msgUsuarios.bc_administrar}" url="admin.faces" />
+				<p:menuitem value="#{msgUsuarios.bc_editar}" url="#" />
+			</p:breadCrumb>
+
+			<p:panelGrid id="panel" style="width:100%">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="2">
+							<p:outputLabel>
+				 	   	  #{msgUsuarios.tituloEditar}
+				 	   	</p:outputLabel>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="codListaP" value="#{msgUsuarios.nomListaP}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneMenu id="codListaP" value="#{beanUsuario.temp}"
+							required="true"
+							requiredMessage="#{msgUsuarios.nomListaRequerido}"
+							style="width: 40%; line-height: 20px">
+							<f:selectItem itemLabel="#{msgUsuarios.codListaP}" itemValue="" />
+							<f:selectItems value="#{beanUsuario.listPComboJPA}"></f:selectItems>
+						</p:selectOneMenu>
+
+						<p:message for="codListaP" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="tipDocumento"
+							value="#{msgUsuarios.tipDocumento}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneRadio id="tipDocumento"
+							value="#{beanUsuario.objUsuario.tipodocumentoUsu}"
+							unselectable="true" required="true"
+							requiredMessage="#{msgUsuarios.tipDocumentoRequerido}"
+							style="width: 40%; line-height:20 px">
+							<f:selectItem itemLabel="T.I" itemValue="TI" />
+							<f:selectItem itemLabel="C.C" itemValue="CC" />
+						</p:selectOneRadio>
+
+
+						<p:message for="tipDocumento" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="documento" value="#{msgUsuarios.documento}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="documento"
+							value="#{beanUsuario.objUsuario.documentoUsu}" required="true"
+							requiredMessage="#{msgUsuarios.documentoRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="documento" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="nomUsuario" value="#{msgUsuarios.nomUsuario}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="nomUsuario"
+							value="#{beanUsuario.objUsuario.nombresUsu}" required="true"
+							requiredMessage="#{msgUsuarios.nomUsuarioRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="nomUsuario" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="primApellido"
+							value="#{msgUsuarios.primApellido}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="primApellido"
+							value="#{beanUsuario.objUsuario.primerapellidoUsu}"
+							required="true"
+							requiredMessage="#{msgUsuarios.primApellidoRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="primApellido" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="segApellido"
+							value="#{msgUsuarios.segApellido}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="segApellido"
+							value="#{beanUsuario.objUsuario.segundoapellidoUsu}"
+							required="true"
+							requiredMessage="#{msgUsuarios.segApellidoRequerio}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="segApellido" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="direccion" value="#{msgUsuarios.direccion}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="direccion"
+							value="#{beanUsuario.objUsuario.direccionUsu}" required="true"
+							requiredMessage="#{msgUsuarios.direccionRequerida}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="direccion" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="telefono" value="#{msgUsuarios.telefono}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="telefono"
+							value="#{beanUsuario.objUsuario.telefonoUsu}" required="true"
+							requiredMessage="#{msgUsuarios.telefonoRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="telefono" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="WhatsAppUsu" value="#{msgUsuarios.WhatsApp}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="WhatsAppUsu"
+							value="#{beanUsuario.objUsuario.whatsappUsu}" required="true"
+							requiredMessage="#{msgUsuarios.WhatsAppRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="WhatsAppUsu" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="fechaNacimiento"
+							value="#{msgUsuarios.fechaNacimiento}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:datePicker id="fechaNacimiento"
+							value="#{beanUsuario.objUsuario.fechanacUsu}" required="true"
+							requiredMessage="#{msgUsuarios.fechaNacimientoRequerida}"
+							style="width: 40%; line-height:20 px" showIcon="true" />
+
+						<p:message for="fechaNacimiento" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="generoUsu" value="#{msgUsuarios.genero}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneRadio id="generoUsu"
+							value="#{beanUsuario.objUsuario.generoUsu}" unselectable="true"
+							required="true" requiredMessage="#{msgUsuarios.generoRequerido}"
+							style="width: 40%; line-height:20 px">
+							<f:selectItem itemLabel="Masculino" itemValue="1" />
+							<f:selectItem itemLabel="Femenino" itemValue="2" />
+						</p:selectOneRadio>
+
+
+						<p:message for="generoUsu" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="correoE" value="#{msgUsuarios.CorreoE}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="correoE"
+							value="#{beanUsuario.objUsuario.correoUsu}" required="true"
+							requiredMessage="#{msgUsuarios.CorreoRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="correoE" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="clave" value="#{msgUsuarios.clave}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="clave" value="#{beanUsuario.objUsuario.claveUsu}"
+							required="true" requiredMessage="#{msgUsuarios.claveRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="clave" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+				<f:facet name="footer">
+					<p:row>
+						<p:column style="with:20%"></p:column>
+						<p:column style="with:80%">
+							<p:commandButton value="#{msgUsuarios.btn_editarUsuario}"
+								ajax="false" update="panel messages"
+								action="#{beanUsuario.editarProducto()}"></p:commandButton>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

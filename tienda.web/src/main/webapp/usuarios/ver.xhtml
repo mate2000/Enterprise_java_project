@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/menu_template.xhtml">
+
+
+	<ui:define name="tituloPagina">#{msgUsuarios.T_listarUsuario}</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+
+			<p:growl id="messages" showDetail="true" showSummary="true"
+				for="msgGrowl" escape="false" />
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#{request.contextPath}/index.faces" />
+				<p:menuitem value="#{msgUsuarios.bc_Usuario}" url="#" />
+				<p:menuitem value="#{msgUsuarios.bc_listar}" url="#" />
+			</p:breadCrumb>
+
+
+			<p:dataTable var="objUsuario" value="#{beanUsuario.listUsuarios}" rows="5" paginator="true"
+				paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+				rowsPerPageTemplate="5,10,15">
+
+				<f:facet name="header">#{msgUsuarios.T_listarUsuario}</f:facet>
+				
+				<p:column headerText="#{msgUsuarios.tipDocumento}" style="width=20%">
+				<h:outputText value="#{objUsuario.tipodocumentoUsu}"></h:outputText>
+				
+				</p:column>
+				
+				
+				<p:column headerText="#{msgUsuarios.documento}" style="width=20%">
+				<h:outputText value="#{objUsuario.documentoUsu}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgUsuarios.nomListaP}" style="width=80%">
+				<h:outputText value="#{objUsuario.listasprecio.nombrelistaLp}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgUsuarios.nomUsuario}" style="width=80%">
+				<h:outputText value="#{objUsuario.nombresUsu}"></h:outputText>
+				
+				</p:column>						
+				
+				
+				<p:column headerText="#{msgUsuarios.primApellido}" style="width=20%">
+				<h:outputText value="#{objUsuario.primerapellidoUsu}"></h:outputText>
+				
+				</p:column>
+			    
+			    
+			    
+				<p:column headerText="#{msgUsuarios.direccion}" style="width=20%">
+				<h:outputText value="#{objUsuario.direccionUsu}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgUsuarios.telefono}" style="width=20%">
+				<h:outputText value="#{objUsuario.telefonoUsu}"></h:outputText>
+				
+				</p:column>
+				
+				<p:column headerText="#{msgUsuarios.fechaNacimiento}" style="width=20%">
+				<h:outputText value="#{objUsuario.fechanacUsu}"></h:outputText>
+				
+				</p:column>
+				
+				
+				
+
+			</p:dataTable>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

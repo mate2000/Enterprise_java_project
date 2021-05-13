@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/menu_template.xhtml">
+
+
+	<ui:define name="tituloPagina">Crear Precio</ui:define>
+
+	<ui:define name="cuerpo">
+		<h:form>
+
+			<p:growl id="messages" showDetail="true" showSummary="true"
+				for="msgGrowl" escape="false" />
+
+			<p:breadCrumb>
+				<p:menuitem value="Home" url="#{request.contextPath}/index.faces" />
+				<p:menuitem value="#{msgPrecios.bc_Precios}" url="#" />
+				<p:menuitem value="#{msgPrecios.bc_crear}" url="#" />
+			</p:breadCrumb>
+
+			<p:panelGrid id="panel" style="width:100%">
+				<f:facet name="header">
+					<p:row>
+						<p:column colspan="2">
+							<p:outputLabel>
+				 	   	  #{msgPrecios.tituloCreacion}
+				 	   	</p:outputLabel>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="codProducto"
+							value="#{msgPrecios.codigoProducto}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneMenu id="codProducto" value="#{beanPrecio.tempProducto}"
+							required="true" requiredMessage="#{msgPrecios.nombreProductoRequerido}"
+							style="width: 40%; line-height: 20px">
+							<f:selectItem itemLabel="#{msgPrecios.codigoProducto}" itemValue="" />
+							<f:selectItems value="#{beanPrecio.productosComboJPA}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						<p:message for="codProducto" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="codListaP"
+							value="#{msgPrecios.codigoListaPrecio}" />
+					</p:column>
+
+					<p:column style="width:80%">
+
+						<p:selectOneMenu id="codListaP" value="#{beanPrecio.tempListaP}"
+							required="true" requiredMessage="#{msglista.nombreListaPrecioRequerido}"
+							style="width: 40%; line-height: 20px">
+							<f:selectItem itemLabel="#{msglista.nombreListaPrecio}" itemValue="" />
+							<f:selectItems value="#{beanPrecio.listPComboJPA}"></f:selectItems>
+						</p:selectOneMenu>
+						
+						<p:message for="codListaP" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column style="width:20%">
+						<h:outputLabel for="valor"
+							value="#{msgPrecios.valor}" />
+					</p:column>
+
+					<p:column style="width:80%">
+						<p:inputText id="valor"
+							value="#{beanPrecio.objPrecio.valorPre}" required="true"
+							requiredMessage="#{msgPrecios.valorRequerido}"
+							style="width: 40%; line-height:20 px" />
+
+						<p:message for="valor" style="width:35%"></p:message>
+					</p:column>
+				</p:row>
+				
+				<f:facet name="footer">
+					<p:row>
+						<p:column style="with:20%"></p:column>
+						<p:column style="with:80%">
+							<p:commandButton value="#{msgPrecios.btn_crearPrecio}"
+								ajax="false" update="panel messages"
+								action="#{beanPrecio.crearPrecio()}"></p:commandButton>
+						</p:column>
+					</p:row>
+				</f:facet>
+
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

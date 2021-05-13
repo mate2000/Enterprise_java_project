@@ -1,0 +1,12 @@
+co\tiendaejb\modelos\Usuario.class
+co\tiendaejb\modelos\Pedido.class
+co\tiendaejb\modelos\Producto.class
+co\tiendaejb\modelos\Precio.class
+co\tiendaejb\modelos\Categoria.class
+co\tiendaejb\logica\BeanLogica.class
+co\tiendaejb\modelos\PrecioPK.class
+co\tiendaejb\servicios\serviciosBasicos.class
+co\tiendaejb\modelos\Detallespedido.class
+co\tiendaejb\modelos\Listasprecio.class
+co\tiendaejb\modelos\Imagene.class
+co\tiendaejb\interfaces\FachadaJPA.class
